@@ -1,0 +1,29 @@
+<% layout("./layout/boilerplate.ejs")  %>
+<body>
+    <h1 style="text-align: center">BlogPosts</h1>
+    <% for (blog of allBlogs) {%>
+    <div class="blogs">
+        <div class="blog-head">
+            <div class="blog-user">
+                <img class="user-pic"src="<%= blog.picture%>" alt="*userPic">
+                <h4><%= blog.username %></h4>
+            </div>
+            <div class="blog-time">
+                <p><i><%=blog.dateTime %></i></p>
+            </div>
+        </div>
+        <div class="blog-body">
+            <h2><%= blog.title %></h2>
+            <p> <%= blog.blogmat%> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ratione dicta illo incidunt hic modi laborum voluptatibus praesentium excepturi repellat minima, nulla numquam distinctio vitae iste accusamus, quidem eum fugit.
+            Illo doloribus minus, repudiandae iure, ex ducimus necessitatibus ratione recusandae animi mollitia, itaque nulla sunt architecto. Nostrum dolor dicta voluptate rem sit veritatis consequatur molestias cumque provident laboriosam, reiciendis alias?</p>
+        </div>
+        <div class="blog-options">
+            <form method="get" action="/home/<%= blog._id %>">
+                <button> View-Post </button>
+            </form>
+        </div>
+    </div>
+    <% } %>
+</body>
+
+
