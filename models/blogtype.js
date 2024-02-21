@@ -20,6 +20,10 @@ const blogtype = new Schema({
         type: String
     },
     dateTime: String,
+    password: {
+        type: String,
+        required: true
+    }
 })
 
 const blogpost = mongoose.model("blogpost",blogtype);

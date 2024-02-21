@@ -1,18 +1,14 @@
 My-Aim : 
 
-    to create a blogPost website where users can 
-    post blogs , with features shown such as the blogpost, username
-    ,comment
+    > user authentication, login or signup feature
 
-    and the comment containing username as well
+    > add The comment system, comment on someone's post
 
-    and a way to login or signup as different users. authentication 
+    > for deletion or updation of post - asking for password - but with sign up feature not necessary
 
-    A way to comment on a post. Like loading the entire post with a button
-    and below is space for writing and posting comment on the post in a format.
+    > Creating a super-User or "Admin" - having the ability to do whatever he wants to anything.
 
-basic will create homepage -- blogs -- on it comment section
-                directing to another page to add comment. ejs template
+    > keep using git and github, and host it online somehow
 
 -------------- 9 feb --------------
 

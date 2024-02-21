@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const mongoose = require("mongoose");
-const blogpost = require("./models/blogtype.js") // blogpost - collection
+const blogposts = require("./models/blogtype.js") // blogposts - collection
 const ejsMate = require("ejs-mate");
+const methodOverride = require("method-override");
+const bodyParser = require("body-parser");
 
 const timee = new Date();
 
@@ -11,6 +13,8 @@ app.use(express.static(path.join(__dirname,"public")));
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.engine("ejs",ejsMate);
+app.use(methodOverride("_method"));
+app.use(bodyParser.urlencoded({extended: true}));
 
 async function main(){
     await mongoose.connect("mongodb://127.0.0.1:27017/Blogger-p");
@@ -24,29 +28,45 @@ main()
     console.log("error occured: ",err)
  })
 
-let arr = ["raj","Satish","girish"]; // JUST At random 
-
-
-
 app.get("/",(req,res)=>{
     res.send("The site functions!");
 })
 
+app.get("/home/new",(req,res)=>{
+    let now = timee.toLocaleString();
+    res.render("pages/new.ejs",{now});
+})
+
+app.post("/home",async(req,res)=>{
+    const newBlog = new blogposts(req.body.blogpost);
+    try{
+        await newBlog.save();
+        console.log(newBlog);
+        res.redirect("/home");
+    }catch(error){
+        console.log("An error occured: ",error);
+        res.send("Lmao okay try again please");
+    }
+})
+
 app.get("/home",async(req,res)=>{
-    const allBlogs = await blogpost.find({});
+    const allBlogs = await blogposts.find({});
     res.render("pages/home.ejs",{allBlogs});
 })
 
 app.get("/home/:id",async(req,res)=>{
     let {id} = req.params;
-    const blog = await blogpost.findById(id);
-    res.render("pages/show.ejs",{blog});
+    const blogpost = await blogposts.findById(id);
+    res.render("pages/show.ejs",{blogpost});
 })
+
+// for deletion
+
 
 app.get("/init",async(req,res)=>{
     let now = timee.toLocaleString(); // current time in string format
     console.log(now);
-    const newBlog = new blogpost({
+    const newBlog = new blogposts({
         username: "Akash",
         picture: "",
         title: "Mr. Dostoevsky",

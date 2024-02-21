@@ -1,10 +1,25 @@
 <% layout("./layout/boilerplate.ejs")  %>
 <body>
-    <div class="blog-box">
-        <h1 style="text-align: center"><%= blog.username %>'s Post</h1>
-        <hr>
-        <h3 style="text-align: center"><%= blog.title %></h3>
-        <p><%= blog.blogmat %></p>
+    <div class="show-blog-box-con">
+        <div class="blog-box">
+            <div class="show-blog-upper">
+                <h1 style="text-align: center"><%= blogpost.username %>'s Post</h1>
+                <hr>
+                <h3 style="text-align: center"><%= blogpost.title %></h3>
+                <p><%= blogpost.blogmat %></p>
+                <br>
+            </div>
+            <div class="show-blog-bottom">
+                <div class="show-blog-time">
+                    <p><i><%=blog.dateTime %></i></p>
+                </div>
+                <div class="show-blog-options">
+                    <a href="/edit"> Edit </a>
+                    <a href="/delete"> Delete</a>
+                    <a href="/comment"> Comment</a>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
