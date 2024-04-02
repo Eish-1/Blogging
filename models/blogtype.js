@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const users = require("./user.js");
 
 const blogtype = new Schema({
     username: {
@@ -20,10 +21,7 @@ const blogtype = new Schema({
         type: String
     },
     dateTime: String,
-    password: {
-        type: String,
-        required: true
-    }
+    
 })
 
 const blogpost = mongoose.model("blogpost",blogtype);

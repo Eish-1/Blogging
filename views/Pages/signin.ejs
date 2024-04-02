@@ -1,0 +1,15 @@
+<% layout("./layout/boilerplate.ejs") %>
+<body>
+    <form method="post" action="/home/logged">
+        
+        <div class="sign-in-box">
+            <p>Enter username: </p>
+            <input name="username" type="text" placeholder="Username" required>
+            <p>Enter password: </p>
+            <input name="password" type="password" placeholder="password" required>
+            <a href="/signup">new-user?</a>
+            <button>Submit</button>
+        </div> 
+
+    </form>
+</body>

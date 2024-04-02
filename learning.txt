@@ -1,0 +1,5 @@
+>> db.users.find({},{username: 1, _id: 0})  // for only getting usernames 
+
+// another static method in local-passport, saves in db the new instance with its password. also checks whether the username is unique or not
+
+>> let registeredUser =  await User.register(fakeUser,"faker123"); 
